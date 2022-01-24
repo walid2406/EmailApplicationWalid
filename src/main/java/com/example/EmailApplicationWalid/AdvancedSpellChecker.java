@@ -3,11 +3,16 @@ package com.example.EmailApplicationWalid;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-
-public class AdvancedSpellChecker implements SpellChecker  {
+@Component
+@Primary
+// @Scope("prototype") ne convient pas avec lifecycle hooks
+//so implimant other class such as initilazinBean and DisposobleBean
+public class AdvancedSpellChecker implements SpellChecker, InitializingBean, DisposableBean  {
 
 
 
@@ -27,4 +32,15 @@ public class AdvancedSpellChecker implements SpellChecker  {
     }
 
 
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("Distroyed proprety ok ok walid");
+
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("setting  property after bean is initialised  walid");
+
+    }
 }

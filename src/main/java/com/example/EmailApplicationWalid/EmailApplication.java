@@ -3,6 +3,8 @@ package com.example.EmailApplicationWalid;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
 
 public class EmailApplication {
 
@@ -29,6 +31,16 @@ public class EmailApplication {
         emailClient.sendEmail("first message");
         emailClient.sendEmail("second message");
         System.out.println("oooooooooo");
+
+
+        // Bean Scopes affichage des scopes
+        AdvancedSpellChecker advancedSpellChecker = applicationContext.getBean("advancedSpellChecker", AdvancedSpellChecker.class);
+        System.out.println(advancedSpellChecker);
+        AdvancedSpellChecker advancedSpellChecker1 = applicationContext.getBean("advancedSpellChecker", AdvancedSpellChecker.class);
+        System.out.println(advancedSpellChecker1);
+
+        ((AnnotationConfigApplicationContext) applicationContext).registerShutdownHook();
+
 
     }
 

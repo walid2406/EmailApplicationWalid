@@ -1,6 +1,8 @@
 package com.example.EmailApplicationWalid;
 
-//@Component
+import org.springframework.stereotype.Component;
+
+@Component
 //@Primary
 class BasicSpellChecker implements SpellChecker {
 
